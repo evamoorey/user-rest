@@ -22,6 +22,7 @@ public class UserController {
         this.userService = userService;
     }
 
+
     @GetMapping
     public String usersData() {
         return userService.getAll().toString();
