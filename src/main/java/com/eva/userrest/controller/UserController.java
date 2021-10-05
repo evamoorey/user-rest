@@ -35,7 +35,7 @@ public class UserController {
     @PostMapping("/user/new")
     public @ResponseBody
     String addUser(@RequestBody User user) {
-        userService.add(user);
+        userService.save(user);
         return "User added successfully!";
     }
 
@@ -47,10 +47,18 @@ public class UserController {
             return "User with id = " + id + " deleted successfully!";
         }
         return "Error! Database doesn't have user with this id.";
-
     }
-    //@PutMapping (update info) https://spring.io/guides/tutorials/rest/
 
-
+    @PutMapping("user/update/{id}")
+    public @ResponseBody
+    String updateUser(@PathVariable Integer id, @RequestBody User user) {
+        if (userService.containsId(id)) {
+            userService.read(id).setName(user.getName());
+            userService.read(id).setInfo(user.getInfo());
+            userService.save(userService.read(id));
+            return "User with id = " + id + " changed successfully!";
+        }
+        return "Error! Database doesn't have user with this id.";
+    }
 }
 

@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void add(User user) {
+    public void save(User user) {
         userRepository.save(user);
     }
 
@@ -41,5 +41,4 @@ public class UserServiceImpl implements UserService {
     public Boolean containsId(Integer id) {
         return userRepository.existsById(id);
     }
-
 }

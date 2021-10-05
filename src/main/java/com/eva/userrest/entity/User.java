@@ -22,12 +22,14 @@ public class User {
     @NotNull
     private String info;
 
-    public User() {}
+    public User() {
+    }
 
     public User(String name, String info) {
         this.name = name;
         this.info = info;
     }
+
     public Integer getId() {
         return id;
     }
@@ -36,8 +38,16 @@ public class User {
         return info;
     }
 
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
