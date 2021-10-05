@@ -24,20 +24,31 @@ public class UserController {
     }
 
     @GetMapping("{id}")
-    public @ResponseBody String getUserById(@PathVariable Integer id) {
-        if (id > userService.getAll().size()) {
+    public @ResponseBody
+    String getUserById(@PathVariable Integer id) {
+        if (!userService.containsId(id)) {
             return "Error! Database doesn't have user with this id.";
         }
         return userService.read(id).toString();
     }
 
-    @PostMapping("/user")
-    public @ResponseBody String addUser(@RequestBody User user) {
+    @PostMapping("/user/new")
+    public @ResponseBody
+    String addUser(@RequestBody User user) {
         userService.add(user);
         return "User added successfully!";
     }
 
-    //@DeleteMapping
+    @GetMapping("user/delete/{id}")
+    public @ResponseBody
+    String deleteUser(@PathVariable Integer id) {
+        if (userService.containsId(id)) {
+            userService.delete(id);
+            return "User with id = " + id + " deleted successfully!";
+        }
+        return "Error! Database doesn't have user with this id.";
+
+    }
     //@PutMapping (update info) https://spring.io/guides/tutorials/rest/
 
 

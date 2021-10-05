@@ -31,11 +31,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean delete(Integer id) {
-        if (userRepository.existsById(id)) {
+    public void delete(Integer id) {
+        if (containsId(id)) {
             userRepository.deleteById(id);
-            return true;
         }
-        return false;
     }
+
+    @Override
+    public Boolean containsId(Integer id) {
+        return userRepository.existsById(id);
+    }
+
 }
