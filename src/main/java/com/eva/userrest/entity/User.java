@@ -1,12 +1,13 @@
 package com.eva.userrest.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "id"})
 public class User {
     @Id
     @Column(name = "id")
@@ -14,19 +15,19 @@ public class User {
     private Integer id;
 
     @Column(name = "name")
+    @NotNull
     private String name;
 
     @Column(name = "info")
+    @NotNull
     private String info;
 
     public User() {}
 
-    public User(Integer id, String name, String info) {
-        this.id = id;
+    public User(String name, String info) {
         this.name = name;
         this.info = info;
     }
-
     public Integer getId() {
         return id;
     }

@@ -3,12 +3,7 @@ package com.eva.userrest.controller;
 import com.eva.userrest.entity.User;
 import com.eva.userrest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.io.PrintWriter;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -29,14 +24,21 @@ public class UserController {
     }
 
     @GetMapping("{id}")
-    public User getUserById(@PathVariable Integer id) {
+    public @ResponseBody String getUserById(@PathVariable Integer id) {
         if (id > userService.getAll().size()) {
-            System.out.println("Error!\nDatabase doesn't have user with this id.");
-            //реализовать вывод текста в веб
-            return null;
+            return "Error! Database doesn't have user with this id.";
         }
-        return userService.read(id);
+        return userService.read(id).toString();
     }
+
+    @PostMapping("/user")
+    public @ResponseBody String addUser(@RequestBody User user) {
+        userService.add(user);
+        return "User added successfully!";
+    }
+
+    //@DeleteMapping
+    //@PutMapping (update info) https://spring.io/guides/tutorials/rest/
 
 
 }

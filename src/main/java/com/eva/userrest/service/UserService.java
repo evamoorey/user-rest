@@ -5,8 +5,8 @@ import com.eva.userrest.entity.User;
 import java.util.List;
 
 public interface UserService {
-    // Create new user.
-    void create(User user);
+    // Add new user.
+    void add(User user);
 
     // Get list of all users.
     List<User> getAll();

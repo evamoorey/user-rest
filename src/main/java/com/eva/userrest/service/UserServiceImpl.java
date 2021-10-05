@@ -2,7 +2,6 @@ package com.eva.userrest.service;
 
 import com.eva.userrest.entity.User;
 import com.eva.userrest.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +16,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void create(User user) {
+    public void add(User user) {
         userRepository.save(user);
     }
 
