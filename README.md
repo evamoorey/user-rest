@@ -1,5 +1,5 @@
 # Users
-Spring boot REST-application with PostreSQL DB.
+Spring boot REST-application with PostgreSQL DB.
 
 / - get all users form DataBase 
 
