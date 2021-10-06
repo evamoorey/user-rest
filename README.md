@@ -1,6 +1,8 @@
 # Users
 Spring boot REST-application with PostgreSQL DB.
 
+User with id, name and info.
+
 / - get all users form DataBase 
 
 /user/{id} - get user by id
