@@ -16,8 +16,4 @@ public interface UserService {
 
     // Delete user by id.
     void delete(Integer id);
-
-    // Check that DB has current id.
-    Boolean containsId(Integer id);
-
 }

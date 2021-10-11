@@ -5,6 +5,7 @@ import com.eva.userrest.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -23,37 +24,29 @@ public class UserControllerImpl implements UserController {
         return userService.getAll();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public User getUserById(@PathVariable Integer id) {
-        if (!userService.containsId(id)) {
-            //return "Error! Database doesn't have user with this id.";
-        }
-        return userService.read(id);
+        return Optional.of(userService.read(id))
+                .orElseThrow(() -> new RuntimeException("User with this id not found!"));
     }
 
-    @PostMapping("/user/new")
+    @PostMapping
     public User addUser(@RequestBody User user) {
         userService.save(user);
         return user;
     }
 
-    @GetMapping("user/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Integer id) {
-        if (userService.containsId(id)) {
-            userService.delete(id);
-            //return "User with id = " + id + " deleted successfully!";
-        }
-        //return "Error! Database doesn't have user with this id.";
+        userService.delete(id);
     }
 
-    @PutMapping("user/update/{id}")
+    @PutMapping("/{id}")
     public User updateUser(@PathVariable Integer id, @RequestBody User user) {
-        if (userService.containsId(id)) {
-            userService.read(id).setName(user.getName());
-            userService.read(id).setInfo(user.getInfo());
-            userService.save(userService.read(id));
-            return user;
-        }
+        User newUser = Optional.of(userService.read(id)).orElse(user);
+        newUser.setInfo(user.getInfo());
+        newUser.setName(user.getInfo());
+        userService.save(newUser);
         return user;
     }
 }
