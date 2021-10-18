@@ -2,6 +2,7 @@ package com.eva.userrest.controller;
 
 
 import com.eva.userrest.entity.User;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ public interface UserController {
     List<User> usersData();
 
     // Get user by id from DB.
-    User getUserById(Integer id);
+    ResponseEntity<User> getUserById(Integer id);
 
     // Add new user.
     User addUser(User user);

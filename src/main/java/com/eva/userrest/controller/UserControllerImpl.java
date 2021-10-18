@@ -2,6 +2,7 @@ package com.eva.userrest.controller;
 
 import com.eva.userrest.entity.User;
 import com.eva.userrest.service.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,9 +26,10 @@ public class UserControllerImpl implements UserController {
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Integer id) {
-        return Optional.of(userService.read(id))
-                .orElseThrow(() -> new RuntimeException("User with this id not found!"));
+    public ResponseEntity<User> getUserById(@PathVariable Integer id) {
+        return Optional.ofNullable(userService.read(id))
+                .map(user -> ResponseEntity.ok().body(user))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
