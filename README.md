@@ -5,10 +5,10 @@ User with id, name and info.
 
 / - get all users form DataBase 
 
-/user/{id} - get user by id
+/{id} - get user by id
 
-/user/new - add new user from JSON
+/ - add new user from JSON
 
-/user/delete/{id} - delete user by id
+/{id} - delete user by id
 
-/user/update/{id} - update user's name and info by id
+/{id} - update user's name and info by id
