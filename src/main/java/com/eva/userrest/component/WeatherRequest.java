@@ -28,10 +28,4 @@ public class WeatherRequest {
             return null;
         }
     }
-
-    // Check city.
-    public boolean isCity(String city) {
-
-        return true;
-    }
 }
