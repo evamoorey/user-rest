@@ -1,7 +1,7 @@
 package com.eva.userrest.controller;
 
-import com.eva.userrest.entity.Weather;
+import com.eva.userrest.entity.WeatherData;
 
 public interface WeatherController {
-    Weather getWeatherInCity(String id);
+    WeatherData getWeatherInCity(String id);
 }

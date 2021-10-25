@@ -1,6 +1,6 @@
 package com.eva.userrest.controller;
 
-import com.eva.userrest.entity.Weather;
+import com.eva.userrest.entity.WeatherData;
 import com.eva.userrest.service.WeatherService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,8 +18,8 @@ public class WeatherControllerImpl implements WeatherController {
     }
 
     @GetMapping("/{city}")
-    public Weather getWeatherInCity(@PathVariable String city){
-        return (weatherService.getCurrentWeather(city)).weather.get(0);
+    public WeatherData getWeatherInCity(@PathVariable String city){
+        return (weatherService.getCurrentWeather(city));
     }
 
 }
