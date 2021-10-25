@@ -12,3 +12,7 @@ User with id, name and info.
 /{id} - delete user by id
 
 /{id} - update user's name and info by id
+
+Weather 
+
+/{city} - weather in city
