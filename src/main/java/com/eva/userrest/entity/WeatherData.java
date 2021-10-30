@@ -8,6 +8,15 @@ import java.util.List;
 public class WeatherData {
     private Weather[] weather;
     private Main main;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Main getMain() {
         return main;
