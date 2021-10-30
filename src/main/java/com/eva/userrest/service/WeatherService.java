@@ -6,5 +6,6 @@ import com.eva.userrest.entity.WeatherData;
 import java.io.IOException;
 
 public interface WeatherService {
-    WeatherData getCurrentWeather(String city);
+    WeatherData getCurrentWeatherByCity(String city);
+    WeatherData getCurrentWeatherById(Integer id);
 }
