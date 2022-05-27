@@ -12,9 +12,3 @@ User with id, name and info.
 /{id} - delete user by id
 
 /{id} - update user's name and info by id
-
-Weather 
-
-/{city} - weather in city
-
-/id - получение нескольких прогнозов погоды по id в формате (/id?id=2172797&id=420006353)
